@@ -16,8 +16,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Model aur Scaler files in 'model' subfolder
-model_path = os.path.join(BASE_DIR, "model", "employee_salary_model.joblib")
-scaler_path = os.path.join(BASE_DIR, "model", "scaler_employee.joblib")
+model_path = os.path.join(BASE_DIR, "Model", "employee_salary_model.joblib")
+scaler_path = os.path.join(BASE_DIR, "Model", "scaler_employee.joblib")
 
 # Check and Load
 if os.path.exists(model_path) and os.path.exists(scaler_path):
