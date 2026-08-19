@@ -1,0 +1,28 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Python environment
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets / environment variables
+.env
+
+# Logs
+*.log

@@ -5,15 +5,27 @@
 import pandas as pd 
 import streamlit as st 
 import joblib
+import os
 
 
 #-----------------------------
 ## STEP -> 2. Load the model 
 #-----------------------------
 
-model = joblib.load("employee_salary_model.joblib")
-scaler = joblib.load("scaler_employee.joblib")
+# BASE DIR SETUP
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# Model aur Scaler files in 'model' subfolder
+model_path = os.path.join(BASE_DIR, "model", "employee_salary_model.joblib")
+scaler_path = os.path.join(BASE_DIR, "model", "scaler_employee.joblib")
+
+# Check and Load
+if os.path.exists(model_path) and os.path.exists(scaler_path):
+    model = joblib.load(model_path)
+    scaler = joblib.load(scaler_path)
+else:
+    st.error("Model ya Scaler file nahi mili! Location verify karein.")
+    st.stop()
 
 #---------------------------------
 ## STEP -> 3.Title ans Subheader
@@ -338,12 +350,10 @@ if st.button("🚀 Predict Salary "):
     if prediction[0] == 1:
 
         st.success("Income : >50k")
-        st.image("pexels-ersin-1398102958-31689192.jpg",width = 100)
-
+        
     else:
         st.error("Income : <=50k")
-        st.image("pexels-mikhail-nilov-7534380.jpg")
-
+        
     st.metric(
         "Salary Probability ",
         f"{probability * 100:.2f}%"
